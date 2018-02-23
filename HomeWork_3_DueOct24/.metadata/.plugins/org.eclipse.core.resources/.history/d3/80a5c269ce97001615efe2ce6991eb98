@@ -1,0 +1,150 @@
+package Moreno.bcs345.hwk.purchases.presentation;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+import Moreno.bcs345.hwk.purchases.business.Customer;
+import Moreno.bcs345.hwk.purchases.business.Purchase;
+
+public class CustomerPurchaseConsoleUI {
+	
+	public void ShowUI()
+	{
+		Scanner keyboard = new Scanner(System.in);
+		
+		
+		Scanner sc = null;
+		Scanner sc2 = null;
+	
+		
+	
+
+		PrintStream ps = null;
+		PrintStream ps2 = null;
+	
+		
+
+		//Declaring an instance of Address and calling read and write function
+		Customer a = new Customer();
+		
+		
+		//Declaring an instance of Product and calling read and write function
+		Purchase b = new Purchase();
+		
+		
+
+		//int count = 0;
+	
+			int count =0;
+			
+		while (count != 9)
+		{
+			System.out.print("Customer/Purchases UI\n");
+			System.out.print("-----------------------\n");
+			System.out.print("1 – Read customer from file\n");
+			System.out.print("2 – Write customer to file\n");
+			System.out.print("3 – Show customer info on screen\n");
+			System.out.print("4 – Show customer JSON on screen\n");
+			System.out.print("5 – Read purchase from file\n");
+			System.out.print("6 – Write purchase to file\n");
+			System.out.print("7 – Show purchase info on screen\n");
+			System.out.print("8 – Show purchase JSON on screen\n");
+			System.out.print("9 - Exit\n");
+			System.out.print("Enter Choice:");
+			Scanner keyboard2 = new Scanner(System.in);
+			count = keyboard2.nextInt();
+			System.out.print("");
+			if(count == 1)
+			{
+				System.out.print("Enter Customer file: ");
+				String infile = keyboard.nextLine();
+
+				try
+				{
+				FileReader fr = new FileReader(infile);
+				sc = new Scanner(fr);
+				}
+				catch (FileNotFoundException e)
+				{
+					System.out.println("File not found");
+				}
+				a.Read(sc);
+			}
+			else if (count ==2)
+			{
+				System.out.print("Enter new Purchase outfile name: ");
+				String outfile = keyboard.nextLine();
+				try {
+					ps = new PrintStream(outfile);
+				} catch (FileNotFoundException e) {
+					
+					e.printStackTrace();
+				}
+				a.write(ps);
+				
+			}
+			else if (count ==3)
+			{
+				System.out.print(a.toString());
+			}
+			else if (count ==4)
+			{
+				System.out.print(a.GetJSON());
+			
+			}
+			else if (count ==5)
+			{
+				System.out.print("Enter Product file: ");
+				String infile2 = keyboard.nextLine();
+
+				try
+				{
+				FileReader fr2 = new FileReader(infile2);
+				sc2 = new Scanner(fr2);
+				}
+				catch (FileNotFoundException e)
+				{
+					System.out.println("File not found");
+				}
+				b.Read(sc2);
+				
+			}
+			else if (count ==6)
+			{
+				System.out.print("Enter new Product outfile name: ");
+				String outfile2 = keyboard.nextLine();
+				try {
+					ps2 = new PrintStream(outfile2);
+				} catch (FileNotFoundException e) {
+					
+					e.printStackTrace();
+				}
+				b.Write(ps2);
+			}
+			else if (count ==7)
+			{
+				System.out.print(b.toString());
+
+			}
+			else if (count ==8)
+			{
+				System.out.println(b.GetJSON());
+			}
+			else  
+			{
+				System.out.print("Program terminated");
+				break;
+				
+			}
+			keyboard2.close();
+		}
+		
+		
+		keyboard.close();
+		
+		
+		
+	}
+	
+}

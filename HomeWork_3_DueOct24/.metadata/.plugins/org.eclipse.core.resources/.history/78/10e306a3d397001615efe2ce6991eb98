@@ -1,0 +1,84 @@
+package Moreno.bcs345.hwk.purchases.business;
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class Customer {
+	
+	private String m_firstName;
+	private String m_lastName;
+	private Address Address;
+	
+	public Customer()
+	{
+		m_firstName = "0";
+		m_lastName = "0";
+		Address = new Address();
+	}
+	
+	public Customer(String firstName, String lastName)
+	{
+		m_firstName = firstName;
+		m_lastName = lastName;
+	}
+	
+	public  String GetfirstName()
+	{
+		return m_firstName;
+	}
+	
+	public void SetfirstName(String firstName)
+	{
+		m_firstName = firstName;
+	}
+	
+	public String GetlastName() {
+		return m_lastName;
+	}
+
+	public void SetlastName(String lastName)
+	{
+		m_lastName = lastName;
+	}
+	
+	public void Read(Scanner s)
+	{
+			m_firstName = s.nextLine();
+			m_lastName = s.nextLine();
+			Address.Read(s);
+		
+	}
+	
+	
+	public void write(PrintStream ps)
+	{
+		ps.printf("%s\n",m_firstName);
+		ps.printf("%s\n",m_lastName);
+		Address.write(ps);
+	}
+
+	public String GetJSON()
+	{
+		String s;
+		s = "{" + "\n" +"\"" +  "First Name" + "\"" + " : " + "\"" + m_firstName + "\"" +"," + " " + "\"" + "Last Name\""  + " : " + "\"" + m_lastName  + "\""+ "," + " \n" +"\""+ "Address\"" + " :" + "\n" + Address.GetJSON() +"\n" +"}" + "\n";
+		return s;
+	}
+	
+
+	@Override
+	/**
+	 * ToString override toStirng class and return a formatted string
+	 */
+	public String toString()
+	{
+		String s ="";
+		s += m_firstName;
+		s += ", ";
+		s += m_lastName;
+		s += ", ";
+		s += Address.toString();
+		s += "\n";
+		return s;
+	}
+
+}

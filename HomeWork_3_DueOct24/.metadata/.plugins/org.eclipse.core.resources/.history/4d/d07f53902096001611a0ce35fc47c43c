@@ -1,0 +1,30 @@
+package Moreno.bcs345.hwk.purchases.presentation;
+import java.io.File;
+
+ 
+
+
+
+/**
+ * Contains main program code. This class generates two files
+ *  which contain an address and product.
+ * 
+ * @author Juan Moreno
+ * @version 1.0
+ * @since 10/10/16
+ */
+public class Driver {
+
+	/**
+	 * Main is where the code is run.
+	 * @param args contains the command-line arguments
+	 */
+	public static void main(String[] args) {
+		
+	
+		CustomerPurchaseConsoleUI a = new CustomerPurchaseConsoleUI();
+		a.ShowUI();
+		
+	}
+
+}

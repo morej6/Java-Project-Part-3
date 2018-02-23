@@ -1,0 +1,65 @@
+package Moreno.bcs345.hwk.purchases.business;
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class Purchase {
+	private Product Product;
+	private int m_quantity;
+
+	public Purchase()
+	{
+		Product = new Product();
+		m_quantity = 0;
+	}
+	
+	public void Setquantity(int quantity)
+	{
+		m_quantity = quantity;
+	}
+	
+	public int Getquantity()
+	{
+		return m_quantity;
+	}
+	
+	public void Read(Scanner s)
+	{
+			Product.Read(s);
+			m_quantity = s.nextInt();
+		
+	}
+	
+	public void Write(PrintStream ps)
+	{
+		Product.Write(ps);
+		ps.printf("%d\n",m_quantity);
+	}
+	
+	
+	public String GetJSON()
+	{
+		String s;
+		s = "{" + "\n" + "\"" +  "Product\""  + " : " + "\n"  + "{"+ Product.GetJSON() + "\n"+ "}" +"," +"\n"+"\""  + "Quantity\"" + " : " + m_quantity + "\n"+ "}"; 
+		return s;
+	}
+	
+
+	@Override
+	/**
+	 * ToString override toStirng class and return a formatted string
+	 */
+	public String toString()
+	{
+		String s ="";
+		s += m_quantity;
+		s += ", ";
+		s += Product.toString();
+		return s;
+	}
+
+	
+	
+	
+	
+}

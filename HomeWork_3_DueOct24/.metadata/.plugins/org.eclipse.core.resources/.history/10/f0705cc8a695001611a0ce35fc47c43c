@@ -1,0 +1,261 @@
+package Moreno.bcs345.hwk.purchases.presentation;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.*;
+
+import Moreno.bcs345.hwk.purchases.business.*;
+
+/**
+ * Contains main program code. This class generates two files
+ *  which contain an address and product.
+ * 
+ * @author Juan Moreno
+ * @version 1.0
+ * @since 10/10/16
+ */
+public class Driver {
+
+	/**
+	 * Main is where the code is run.
+	 * @param args contains the command-line arguments
+	 */
+	public static void main(String[] args) {
+		/*
+		//Assigning Scanner variable to input file
+		Scanner file1 = null;
+		try {
+			file1 = new Scanner(new File("Address.txt"));
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+	}
+		//Assigning Scanner variable to input file
+		Scanner file2 = null;
+		try {
+			file2 = new Scanner(new File ("Product.txt"));
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+		}
+		
+		//Creating a PrintStream variable to output input file data
+		PrintStream ps = null;
+		try {
+			ps = new PrintStream("Address2.txt");
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//Creating a PrintStream variable to output input file data
+		PrintStream ps2 = null;
+		try {
+			ps2 = new PrintStream("Product2.txt");
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//Declaring an instance of Address and calling read and write function
+		Customer a = new Customer();
+		a.Read(file1);
+		a.write(ps);
+		//Declaring an instance of Product and calling read and write function
+		Purchase b = new Purchase();
+		b.Read(file2);
+		b.Write(ps2);
+		/*	
+		//******************************************************************************
+		//Unit testing for read and write method.
+		//****************************************************************************
+		//Assigning Scanner variable to input file
+		//Testing if the output of the write method works. (From the Address class)
+		Scanner file3 = null;
+		try {
+			file3 = new Scanner(new File("Address2.txt"));
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//Assigning Scanner variable to input file
+		//Testing if the output of the write method works. (from the Product class)
+		Scanner file4 = null;
+		try {
+			file4 = new Scanner(new File ("Product2.txt"));
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+		}
+		
+		
+		//Creating a PrintStream variable to output input file data
+		PrintStream ps3 = null;
+		try {
+			ps3 = new PrintStream("Address3.txt");
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//Creating a PrintStream variable to output input file data
+		PrintStream ps4 = null;
+		try {
+			ps4 = new PrintStream("Product3.txt");
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//Declaring an instance of Address and calling read and write function
+		Address a2 = new Address();
+		a2.Read(file3);
+		a2.write(ps3);
+		//Declaring an instance of Product and calling read and write function
+		Product b2 = new Product();
+		b2.Read(file4);
+		b2.Write(ps4);
+			
+		System.out.print("----------------------------------------------------\n");
+		System.out.print("Testing Get/Set methods for Address\n");
+		System.out.print("----------------------------------------------------\n");		
+		//Setting Adtest to ten and assigning it to each member variable in the Address class
+		Address test = new Address();
+		String Adtest = "10";
+		test.Setnumber(Adtest);
+		test.Setstreet(Adtest);
+		test.Setcity(Adtest);
+		test.Setstate(Adtest);
+		test.Setzip(Adtest);
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Adtest.equals(test.Getnumber()))
+		{
+			System.out.println("Number Get/Set Number: Pass");
+		}
+		else
+		{
+			System.out.println("Number Get/Set Number: FAIL!");
+		}
+				
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Adtest.equals(test.Getstreet())) 
+		{
+			System.out.println("Street Get/Set Street: Pass");
+		}
+		else
+		{
+			System.out.println("Street Get/Set Street: FAIL!");
+		}
+				
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Adtest.equals(test.Getcity()))
+		{
+			System.out.println("City Get/Set City: Pass");
+		}
+		else
+		{
+			System.out.println("City Get/Set City: FAIL!");
+		}
+		
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Adtest.equals(test.Getstate())) 
+		{
+			System.out.println("State Get/Set State: Pass");
+		}
+		else
+		{
+			System.out.println("State Get/Set State: FAIL!");
+		}
+		
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Adtest.equals(test.Getzip()))
+		{
+			System.out.println("Zip Get/Set Zip: Pass");
+		}
+		else
+		{
+			System.out.println("Zip Get/Set Zip: FAIL!");
+		}
+	
+		System.out.println();
+		System.out.print("----------------------------------------------------\n");
+		System.out.print("Testing Get/Set methods for Product class\n");
+		System.out.print("----------------------------------------------------\n");	
+		
+		//Setting Prtest to ten and assigning it to each member variable in the Product class
+		Product Ptest = new Product();
+		String Prtest = "10";
+		double Valid = 10; 
+		Ptest.SetDescription(Prtest);
+		Ptest.SetPrice(Valid);
+		
+		//Testing if ten was properly set using the Set method, and if it return ten by calling the Get method
+		if (Prtest.equals(Ptest.GetDescription()))
+		{
+			System.out.println("Description Get/Set Descrition: Pass");
+		}
+		else
+		{
+			System.out.println("Description Get/Set Description: FAIL!");
+		}
+		
+		//Testing if 10 is set to price.		
+		if (Valid == Ptest.GetPrice())
+		{
+			System.out.println("Price Get/Set Price: Pass");
+		}
+		else
+		{
+			System.out.println("Price Get/Set Price: FAIL!");
+		}
+		
+		System.out.println();
+		System.out.print("----------------------------------------------------\n");
+		System.out.print("Testing Invalid Data for price method\n");
+		System.out.print("----------------------------------------------------\n");		
+		
+		double inValid = -10;
+		Ptest.SetPrice(inValid);
+		//Setting -10 to price and testing if the value is set
+		// if the value is set is print pass which would be wrong.
+		//If the value fails to set it will print fail which is correct 
+		//since a negative price can not be allowed
+		if (inValid == Ptest.GetPrice())
+		{
+			System.out.println("Price Get/Set Price, Invalid Value: Pass");
+		}
+		else
+		{
+			System.out.println("Price Get/Set Price, Invalid Value: FAIL!");
+		}
+		
+		System.out.println();
+		System.out.print("----------------------------------------------------\n");
+		System.out.print("Testing toString & JSON methods\n");
+		System.out.print("----------------------------------------------------\n");		
+		//Calling toString method from Address class
+		System.out.println(a.toString());
+		//Calling JSON method from Address class
+		System.out.println(a.GetJSON());
+		System.out.println();
+		//Calling toString method from Product class
+		System.out.println(b.toString());
+		//Calling JSON method from Product class
+		System.out.println(b.GetJSON());
+		
+		//Closing all Scanner variables 
+		
+		System.out.println(a.toString());
+		System.out.println(a.GetJSON());
+		//System.out.println(b.toString());
+		//System.out.println(b.GetJSON());
+		file1.close();
+		file2.close();
+		//file3.close();
+		//file4.close();*/
+		CustomerPurchaseConsoleUI a = new CustomerPurchaseConsoleUI();
+		a.ShowUI();
+	}
+
+}
